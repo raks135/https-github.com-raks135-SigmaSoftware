@@ -23,7 +23,6 @@ try
     // Configure Dependency Injection
     builder.ConfigDI();
 
-
     // Call the method to configure the database provider
     builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
@@ -34,9 +33,7 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-
     var app = builder.Build();
-
 
     // Configure the HTTP request pipeline.
     if (app.Environment.IsDevelopment())
