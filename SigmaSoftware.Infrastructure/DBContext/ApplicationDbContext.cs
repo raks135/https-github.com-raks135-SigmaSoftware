@@ -13,6 +13,9 @@ public class ApplicationDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Candidate>()
+        .HasKey(c => c.Id); 
+
+        modelBuilder.Entity<Candidate>()
             .HasIndex(c => c.Email)
             .IsUnique();
 

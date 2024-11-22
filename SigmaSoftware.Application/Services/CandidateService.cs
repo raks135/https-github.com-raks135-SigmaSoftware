@@ -17,7 +17,6 @@ namespace SigmaSoftware.Application.Services
 
         private readonly IRepository<Candidate> _repository;
         private readonly ILogger<CandidateService> _logger;
-        private readonly CandidateDtoValidator _validator;
         private readonly IMemoryCache _memoryCache;
 
         #endregion
@@ -33,12 +32,10 @@ namespace SigmaSoftware.Application.Services
         public CandidateService(
             IRepository<Candidate> repository,
             ILogger<CandidateService> logger,
-            CandidateDtoValidator validator,
             IMemoryCache memoryCache)
         {
             _repository = repository;
             _logger = logger;
-            _validator = validator;
             _memoryCache = memoryCache;
         }
 
@@ -63,7 +60,11 @@ namespace SigmaSoftware.Application.Services
 
             try
             {
-                var cacheKey = candidateDTO.Email.ToLower();  
+                var cacheKey = candidateDTO.Email.ToLower();
+                if (string.IsNullOrWhiteSpace(cacheKey))
+                {
+                    throw new ArgumentException("Cache key cannot be null or empty.", nameof(cacheKey));
+                }
 
                 if (_memoryCache.TryGetValue(cacheKey, out Candidate cachedCandidate))
                 {
@@ -145,12 +146,12 @@ namespace SigmaSoftware.Application.Services
         private bool ValidateCandidate(CandidateDTO candidateDTO, BaseResponse<CandidateDTO> response)
         {
             _logger.LogInformation(LogMessage(nameof(ValidateCandidate), LogConstants.StandardLogMessages.ValidationExecutionInitiationMessage));
-
-            var validationResult = _validator.Validate(candidateDTO);
-            if (!validationResult.IsValid)
+            var validator = new CandidateDtoValidator();
+            var result = validator.Validate(candidateDTO);
+            if (!result.IsValid)
             {
                 _logger.LogWarning(LogMessage(nameof(ValidateCandidate), LogConstants.StandardLogMessages.ValidationFailedMessage));
-                response.Errors.AddRange(validationResult.Errors.Select(x => x.ErrorMessage));
+                response.Errors.AddRange(result.Errors.Select(x => x.ErrorMessage));
                 return false;
             }
 
@@ -190,6 +191,7 @@ namespace SigmaSoftware.Application.Services
 
             var newCandidate = new Candidate
             {
+                Id = Guid.NewGuid().ToString(),
                 FirstName = candidateDTO.FirstName,
                 LastName = candidateDTO.LastName,
                 PhoneNumber = candidateDTO.PhoneNumber,

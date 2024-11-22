@@ -1,12 +1,14 @@
-﻿using SigmaSoftware.Domain.ViewModels;
-
-namespace SigmaSoftware.Domain.Entities
+﻿namespace SigmaSoftware.Domain.Entities
 {
     /// <summary>
     /// Represents a candidate entity with details such as personal information, contact information, and URLs.
     /// </summary>
     public class Candidate
     {
+        /// <summary>
+        /// ID
+        /// </summary>
+        public string Id { get; set; }
         /// <summary>
         /// Gets or sets the candidate's first name.
         /// </summary>

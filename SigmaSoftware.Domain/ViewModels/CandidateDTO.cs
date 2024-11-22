@@ -12,6 +12,10 @@ namespace SigmaSoftware.Domain.ViewModels
     public class CandidateDTO
     {
         /// <summary>
+        /// ID
+        /// </summary>
+        public string Id { get; set; }
+        /// <summary>
         /// Gets or sets the candidate's first name.
         /// </summary>
         public string FirstName { get; set; }

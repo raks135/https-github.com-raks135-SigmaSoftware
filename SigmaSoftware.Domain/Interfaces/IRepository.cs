@@ -29,7 +29,8 @@
         /// A task that represents the asynchronous operation. 
         /// The task result contains the entity if found; otherwise, null.
         /// </returns>
-        Task<TEntity?> GetByEmailAsync(object email);
+        Task<TEntity?> GetByEmailAsync(string email);
+
     }
 
 }

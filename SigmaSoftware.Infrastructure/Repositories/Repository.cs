@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SigmaSoftware.Domain.Interfaces;
+using SigmaSoftware.Infrastructure.DBContext;
 
 namespace SigmaSoftware.Infrastructure.Repositories
 {
@@ -10,7 +11,15 @@ namespace SigmaSoftware.Infrastructure.Repositories
     /// <typeparam name="TEntity">The type of the entity that the repository manages.</typeparam>
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        private readonly DbContext _context;
+        private readonly ApplicationDbContext _context;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Repository{TEntity}"/> class.
+        /// </summary>
+        /// <param name="context">The database context to use for the repository.</param>
+        public Repository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         /// <summary>
         /// Inserts a new entity into the database.
         /// </summary>
@@ -43,15 +52,16 @@ namespace SigmaSoftware.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
         /// <summary>
-        /// Retrieves an entity by its identifier.
+        /// Retrieves an entity by its email.
         /// </summary>
-        /// <param name="email">The identifier of the entity to retrieve.</param>
+        /// <param name="email">The email address of the entity to retrieve.</param>
         /// <returns>
         /// The entity if found; otherwise, null.
         /// </returns>
-        public virtual async Task<TEntity?> GetByEmailAsync(object email)
+        public virtual async Task<TEntity?> GetByEmailAsync(string email)
         {
-            return await _context.Set<TEntity>().FindAsync(email);
+            return await _context.Set<TEntity>()
+                .FirstOrDefaultAsync(e => EF.Property<string>(e, "Email") == email);
         }
 
     }

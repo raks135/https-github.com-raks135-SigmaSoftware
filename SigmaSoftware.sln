@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaSoftware.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaSoftware.Shared", "SigmaSoftware.Shared\SigmaSoftware.Shared.csproj", "{F35F6845-2227-459D-A0B9-A0AFE67BC8BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaSoftware.Tests", "SigmaSoftware.Tests\SigmaSoftware.Tests.csproj", "{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F35F6845-2227-459D-A0B9-A0AFE67BC8BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F35F6845-2227-459D-A0B9-A0AFE67BC8BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F35F6845-2227-459D-A0B9-A0AFE67BC8BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{EC09B403-E73E-45EB-88D2-A16217C5F96D} = {2AAC2168-941E-4B35-A7DB-2C8224A4CE9C}
 		{499D4234-AD2D-4539-85F6-230CF238C55B} = {258E60EC-E6D6-45A4-9342-49B60FEE2894}
 		{F35F6845-2227-459D-A0B9-A0AFE67BC8BB} = {258E60EC-E6D6-45A4-9342-49B60FEE2894}
+		{B1B57437-8EED-4CEB-9F12-84E1A45C5D0A} = {BDC01B97-A62C-458C-8C67-E1179C4C88FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C5FFC98F-A39E-4CFD-8CC0-F930A37AA397}

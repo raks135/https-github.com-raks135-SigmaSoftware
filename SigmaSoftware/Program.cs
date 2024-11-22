@@ -20,11 +20,12 @@ try
     //  builder.Services.AddFluentValidationAutoValidation();
     builder.Services.AddValidatorsFromAssemblyContaining<CandidateDtoValidator>();
 
-    // Configure Dependency Injection
-    builder.ConfigDI();
-
     // Call the method to configure the database provider
     builder.Services.AddDatabaseConfiguration(builder.Configuration);
+
+
+    // Configure Dependency Injection
+    builder.ConfigDI();
 
     //Cache
     builder.Services.AddMemoryCache();
