@@ -7,6 +7,8 @@ using SigmaSoftware.Domain.Interfaces;
 using SigmaSoftware.Domain.ViewModels;
 using SigmaSoftware.Shared.Constants;
 
+namespace SigmaSoftware.Tests;
+
 public class CandidateServiceTests
 {
     private readonly Mock<IRepository<Candidate>> _mockRepository;
