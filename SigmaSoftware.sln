@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaSoftware.API", "SigmaSoftware\SigmaSoftware.API.csproj", "{D8BDEDD6-45B9-4CE6-AE45-20F2FFC341A5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{81346E64-F5F1-435F-A1F3-74EC29B4CF3B}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2AAC2168-941E-4B35-A7DB-2C8224A4CE9C}"
 EndProject
